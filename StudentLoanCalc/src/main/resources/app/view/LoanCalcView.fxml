@@ -52,9 +52,10 @@
                         <Label text="First Payment Date" GridPane.rowIndex="3" />
                         <TextField fx:id="LoanAmount" prefHeight="25.0" prefWidth="100.0" GridPane.columnIndex="1" />
                         <Label text="Additional Payment" GridPane.rowIndex="4" />
-                        <TextField fx:id="InterestRate" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TextField fx:id="NbrOfYears" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="interestRate" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="termLength" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <DatePicker fx:id="PaymentStartDate" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="additionalPayment" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                      </children>
                   </GridPane>
                   <HBox prefHeight="152.0" prefWidth="88.0" />
@@ -70,7 +71,8 @@
                      <children>
                         <Label text="Total Payments" />
                         <Label text="Total Interest" GridPane.rowIndex="1" />
-                        <Label fx:id="lblTotalPayemnts" prefHeight="18.0" prefWidth="174.0" GridPane.columnIndex="1" />
+                        <Label fx:id="lblTotalPayemnts" prefHeight="18.0" prefWidth="174.0" text="00.00" GridPane.columnIndex="1" />
+                        <Label fx:id="totalInterest" prefHeight="18.0" prefWidth="174.0" text="00.00" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                </children>

@@ -1,11 +1,14 @@
 package app.controller;
 
 import app.StudentCalc;
+import app.helper.Loan;
+import app.helper.Payment;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
@@ -18,6 +21,17 @@ public class LoanCalcViewController implements Initializable   {
 	@FXML
 	private TextField LoanAmount;
 
+	@FXML
+	private TextField additionalPayment;
+	
+	@FXML
+	private Label totalInterest;
+	
+	@FXML 
+	private TextField interestRate;
+	
+	@FXML
+	private TextField termLength;
 	
 	@FXML
 	private Label lblTotalPayemnts;
@@ -44,11 +58,19 @@ public class LoanCalcViewController implements Initializable   {
 	@FXML
 	private void btnCalcLoan(ActionEvent event) {
 
-		System.out.println("Amount: " + LoanAmount.getText());
+		//System.out.println("Amount: " + LoanAmount.getText());
 		double dLoanAmount = Double.parseDouble(LoanAmount.getText());
-		System.out.println("Amount: " + dLoanAmount);	
+		//System.out.println("Amount: " + dLoanAmount);
+		double dInterestRate = Double.parseDouble(interestRate.getText());
+		double dTermLength = Double.parseDouble(termLength.getText());
+		double dExtraPayment = Double.parseDouble(additionalPayment.getText());
+		Loan loan = new Loan(dLoanAmount, dInterestRate, dTermLength, dExtraPayment);
+		loan.payments();
+		LinkedList<Payment> payments = loan.getLoanPayments();
 		
-		lblTotalPayemnts.setText("123");
+		lblTotalPayemnts.setText(Integer.toString(payments.getLast().getPaymentNbr()));
+		
+		totalInterest.setText(Double.toString(loan.calculateTotalInterest()));
 		
 		LocalDate localDate = PaymentStartDate.getValue();
 	 

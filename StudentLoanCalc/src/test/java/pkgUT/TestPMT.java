@@ -4,6 +4,9 @@ import static org.junit.Assert.*;
 import org.apache.poi.ss.formula.functions.*;
 import org.junit.Test;
 
+import app.helper.Loan;
+import app.helper.Payment;
+
 public class TestPMT {
 
 	@Test
@@ -19,9 +22,23 @@ public class TestPMT {
 		double PMTExpected = 1162.95;
 		
 		assertEquals(PMTExpected, PMT, 0.01);
+	}
+	
+	@Test
+	public void test_paymentsList() {
+		Loan l = new Loan(15000, .07, 15, 50);
+		l.payments();
+		for (Payment p : l.getLoanPayments()) {
+			//System.out.println(p.getPaymentAmt());
+		}
 		
-		
-		
+	}
+	
+	@Test
+	public void test_round() {
+		double a = 17.556789;
+		a = Loan.round(a, 2);
+		assertTrue(a==17.56);
 	}
 
 }
